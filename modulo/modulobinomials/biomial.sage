@@ -15,6 +15,10 @@ A,B,C = set_ABC(A,B,C)
 A = R(A)
 B = R(B)
 C = R(C)
-#q = R(1/A * B).nth_root(2)
-#p = R(1/A * C).nth_root(e1*e2)
+q_e12 = R(1/A * B)
+p_e12 = R(1/A * C)
+
+q = gcd(int(q_e12),N)
+p = N/q#gcd(int(p_e12),N)
+print('crypto{' + str(p) + "," + str(q) + "}")
 
