@@ -1,23 +1,25 @@
+from Crypto.Util.number import long_to_bytes
 def shift_rows(s):
     s[0][1], s[1][1], s[2][1], s[3][1] = s[1][1], s[2][1], s[3][1], s[0][1]
     s[0][2], s[1][2], s[2][2], s[3][2] = s[2][2], s[3][2], s[0][2], s[1][2]
     s[0][3], s[1][3], s[2][3], s[3][3] = s[3][3], s[0][3], s[1][3], s[2][3]
 
+  
 
 def inv_shift_rows(s):
-    swap_s = swap(s)
+    swap(s)
     for index in range(len(s)):
         for raw in range(index):
-            swap_s[index] = swap_s[index][len(s)-1:] + swap_s[index][:len(s)-1]
-            
-    return swap(swap_s)
+            s[index] = s[index][len(s)-1:] + s[index][:len(s)-1]
+    swap(s)        
+    
 
 def swap(s):
     for i in range(len(s)):
         for j in range(i+1,len(s)):
             
             s[i][j],s[j][i] = s[j][i],s[i][j]       
-    return s
+    
 
 # learned from http://cs.ucsb.edu/~koc/cs178/projects/JT/aes.c
 xtime = lambda a: (((a << 1) ^ 0x1B) & 0xFF) if (a & 0x80) else (a << 1)
@@ -36,6 +38,7 @@ def mix_single_column(a):
 def mix_columns(s):
     for i in range(4):
         mix_single_column(s[i])
+        
 
 
 def inv_mix_columns(s):
@@ -48,12 +51,14 @@ def inv_mix_columns(s):
         s[i][2] ^= u
         s[i][3] ^= v
 
-    # mix_columns(s)
-    return s
+    mix_columns(s)
     
 def matrix2bytes(matrix):
     """ Converts a 4x4 matrix into a 16-byte array.  """
-    return [matrix[index][raw] for index in range(len(matrix)) for raw in range(len(matrix))]
+    print(matrix)
+    matrix = [matrix[index][raw] for index in range(len(matrix)) for raw in range(len(matrix))]
+    print(''.join(chr(num) for num in matrix))
+    
 
 
 state = [
@@ -62,8 +67,9 @@ state = [
     [42, 184, 92, 209],
     [94, 79, 8, 54],
 ]
-print(inv_shift_rows(state))
-state_flat = matrix2bytes(inv_mix_columns(inv_shift_rows(state)))
-result = ''.join(chr(num) for num in state_flat)
-print(result)
+
+
+inv_mix_columns(state)
+inv_shift_rows(state)
+matrix2bytes(state)
 
