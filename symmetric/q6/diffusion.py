@@ -53,13 +53,7 @@ def inv_mix_columns(s):
 
     mix_columns(s)
     
-def matrix_to_text(matrix):
-    """ Converts a 4x4 matrix into a 16-byte array.  """
-    # print(matrix)
-    plaintext = ("".join([chr(matrix[index][raw]) for index in range(len(matrix)) for raw in range(len(matrix))]))
-    # matrix2 = [matrix[index][raw] for index in range(len(matrix)) for raw in range(len(matrix))]
-    # print(''.join(chr(num) for num in matrix2))
-    return plaintext
+
 
 
 state = [
@@ -72,5 +66,6 @@ state = [
 
 # inv_mix_columns(state)
 # inv_shift_rows(state)
+# print(''.join(chr(txt) for txt in sum(state,[])))
 # matrix2bytes(state)
 

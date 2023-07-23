@@ -38,6 +38,8 @@ inv_s_box = (
 
 
 
+print(hex(11))
+if hex(11)
 state = [
     [251, 64, 182, 81],
     [146, 168, 33, 80],
@@ -47,19 +49,21 @@ state = [
 
 def matrix2bytes(matrix):
     """ Converts a 4x4 matrix into a 16-byte array.  """
-    return [matrix[index][raw] for index in range(len(matrix)) for raw in range(len(matrix))]
+    return [matrix[index][raw] for raw in range(len(matrix)) for index in range(len(matrix))]
 
 def inv_s(matrix):
 
     for index in range(len(matrix)):
 
         for raw in range(len(matrix)):
-            matrix[index][raw] = inv_s_box[16*(matrix[index][raw]//16)+(matrix[index][raw] % 16)]
+            matrix[index][raw] = inv_s_box[16*(matrix[index][raw] // 16)+(matrix[index][raw]) % 16)]
             
     # print("".join([chr(matrix[index][raw]) for index in range(len(matrix)) for raw in range(len(matrix))]))
 # inv_s(state)
+# print(state)
+# # state = matrix2bytes(state)
+# print("".join(chr(txt) for txt in sum(state,[])))
 
-# state_flat = matrix2bytes(state)
-# result = ''.join(chr(inv_s_box[16*(num //16)+(num % 16)]) for num in state_flat)
+
 # print(result)
 

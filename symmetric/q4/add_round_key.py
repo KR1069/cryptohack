@@ -17,18 +17,18 @@ round_key = [
 
 def matrix2bytes(matrix):
     """ Converts a 4x4 matrix into a 16-byte array.  """
-    return [matrix[index][raw] for index in range(len(matrix)) for raw in range(len(matrix))]
+    return [matrix[index][raw] for raw in range(len(matrix)) for index in range(len(matrix))]
 
 def add_round_key(s, k):
-    for index in range(len(s)):
+    for raw in range(len(s)):
 
-        for raw in range(len(s)):
+        for index in range(len(s)):
             s[index][raw] = s[index][raw] ^ k[index][raw]
     
-
-# xor_list = matrix2bytes(add_round_key(state, round_key))
-# str = ''.join(chr(xor_key) for xor_key in xor_list)
-# print(str)
+add_round_key(state, round_key)
+print(matrix2bytes(state))
+str = ''.join([chr(xor_result) for xor_result in matrix2bytes(state)])
+print(str)
 # list_xor_key = add_round_key(state, round_key)
 # for i in range(len(s)**2):
 # result = int(''.join(bin(xor_key)[2:].zfill(8) for xor_key in list_xor_key),base=2)
