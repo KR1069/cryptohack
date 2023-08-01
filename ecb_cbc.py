@@ -4,8 +4,7 @@ url_base = 'https://aes.cryptohack.org/ecbcbcwtf/'
 
 response = requests.get(url='%s/encrypt_flag/%s' % (url_base,''.encode().hex())).json()
 cipher_text = response['ciphertext']
-
-print(cipher_text)
+divided_cipher = [cipher_text[32*i:32*i+32] for i in range(len(cipher_text)// 32)]
 
 def decrypt_block(cipher_text):
     divided_cipher = [cipher_text[32*i:32*i+32] for i in range(len(cipher_text)// 32)]
