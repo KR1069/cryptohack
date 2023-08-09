@@ -23,9 +23,10 @@ Bob_fake_dict = '{"B": "0x01"}'
 nc.write(Bob_fake_dict)
 print('-'*6)
 # recieve from _ alice 
-for i in range(3):
-    lines = nc.read().decode('utf-8').split('\n')
-    print(lines)
+print(nc.read())
+lines = nc.read().decode('utf-8').split('\n')
+iv = lines['iv']
+encrypted_flag = lines['encrypted_flag']
     
 
 
