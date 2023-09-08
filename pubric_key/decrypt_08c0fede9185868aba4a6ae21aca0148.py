@@ -26,8 +26,8 @@ def decrypt_flag(shared_secret: int, iv: str, ciphertext: str):
 
 p = int('0xffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece',16)
 g = 2
-shared_secret = 1
-iv =  '5fa2a8248ec574ecdce7f3425f86923e'
-ciphertext = '43baa3c23fe8ccc5d4c11d9c36d39a552e6bda3da15fce8fe1a9e6c62cb8de3a'
+shared_secret = "14538612532375372590"
+iv =  '711b047f67316c00bae85e6527efeab5'
+ciphertext = '9b6c4f5008068c0f0d6993ca11d1306e23f9d550e417608f9b12c9de69b61fc9'
 
 print(decrypt_flag(shared_secret, iv, ciphertext))
