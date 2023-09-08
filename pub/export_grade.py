@@ -9,7 +9,7 @@ for i in range(2):
 
 #send to bob
 print("-"*6)
-nc.write('{"supported": ["DH1536", "DH64"]}')
+nc.write('{"supported": ["DH64", "DH2"]}')
 for i in range(2):
     print(nc.read().decode('utf-8').split('\n'))
 #send to alice
